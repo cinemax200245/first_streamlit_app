@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-streamlit.header("Fruityvice Fruit Advice!")
+st.header("Fruityvice Fruit Advice!")
 
 my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_fruit_list = my_fruit_list.set_index('Fruit')
@@ -14,5 +14,9 @@ st.dataframe(my_fruit_list)
 
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruityvice_response)
+st.text(fruityvice_response)
+
+# write your own comment -what does the next line do? 
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+st.dataframe(fruityvice_normalized)
 
